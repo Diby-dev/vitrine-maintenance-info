@@ -18,7 +18,7 @@ export default function Hero() {
           Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
         {/* Overlay sombre pour la lisibilité */}
-        <div className="absolute inset-0 bg-black/30 z-10"></div>
+        <div className="absolute inset-0 bg-black/10 z-10"></div>
       </div>
 
       {/* 2. Contenu global */}
