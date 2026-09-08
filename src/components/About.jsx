@@ -1,3 +1,5 @@
+import Reveal from './Reveal';
+
 export default function About() {
   return (
     <section 
@@ -12,45 +14,57 @@ export default function About() {
         
         {/* Colonne de gauche : Texte de présentation */}
         <div className="flex flex-col gap-6">
-          <div className="inline-block px-4 py-1.5 bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-400 text-sm font-medium w-fit">
-            Nous sommes
-          </div>
+          <Reveal animation="fade-down" delay={100}>
+            <div className="inline-block px-4 py-1.5 bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-400 text-sm font-medium w-fit">
+              Nous sommes
+            </div>
+          </Reveal>
           
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-100">
-            Votre expert en maintenance et réparation high-tech
-          </h2>
+          <Reveal animation="fade-right" delay={200}>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-100">
+              Votre expert en maintenance et réparation high-tech
+            </h2>
+          </Reveal>
 
-          <p className="text-slate-300 leading-relaxed text-base">
-            Chez <strong className="text-white">Ismo Maintenance</strong>, nous savons à quel point vos appareils du quotidien sont indispensables, qu'il s'agisse de votre smartphone personnel, de votre PC professionnel ou de votre imprimante. <br /> Nous nous engageons à fournir un service de maintenance et de réparation rapide, fiable et de qualité. Notre équipe d'experts est dédiée à diagnostiquer et résoudre vos problèmes techniques avec précision et efficacité. 
-          </p>
+          <Reveal animation="fade-right" delay={300}>
+            <p className="text-slate-300 leading-relaxed text-base">
+              Chez <strong className="text-white">Ismo Maintenance</strong>, nous savons à quel point vos appareils du quotidien sont indispensables, qu'il s'agisse de votre smartphone personnel, de votre PC professionnel ou de votre imprimante. <br /> Nous nous engageons à fournir un service de maintenance et de réparation rapide, fiable et de qualité. Notre équipe d'experts est dédiée à diagnostiquer et résoudre vos problèmes techniques avec précision et efficacité. 
+            </p>
+          </Reveal>
 
           {/* Petits points clés / Avantages */}
           <div className="grid grid-cols-2 gap-4 pt-4 border-t border-slate-800">
-            <div>
-              <p className="text-2xl font-bold text-purple-400">100%</p>
-              <p className="text-sm text-slate-400">Diagnostic minutieux</p>
-            </div>
-            <div>
-              <p className="text-2xl font-bold text-purple-400">Rapide</p>
-              <p className="text-sm text-slate-400">Interventions express</p>
-            </div>
+            <Reveal animation="fade-up" delay={400}>
+              <div>
+                <p className="text-2xl font-bold text-purple-400">100%</p>
+                <p className="text-sm text-slate-400">Diagnostic minutieux</p>
+              </div>
+            </Reveal>
+            <Reveal animation="fade-up" delay={500}>
+              <div>
+                <p className="text-2xl font-bold text-purple-400">Rapide</p>
+                <p className="text-sm text-slate-400">Interventions express</p>
+              </div>
+            </Reveal>
           </div>
         </div>
 
-        {/* Colonne de droite : Vidéo avec effet de zoom au survol */}
-        <div className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-2xl border border-slate-800 bg-slate-900 group">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-          >
-            <source src="/about.mp4" type="video/mp4" />
-            Votre navigateur ne supporte pas la lecture de vidéos.
-          </video>
-          <div className="absolute inset-0 bg-black/10 pointer-events-none"></div>
-        </div>
+        {/* Colonne de droite : Vidéo avec effet slide depuis la droite */}
+        <Reveal animation="fade-left" delay={250} className="w-full">
+          <div className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-2xl border border-slate-800 bg-slate-900 group">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            >
+              <source src="/about.mp4" type="video/mp4" />
+              Votre navigateur ne supporte pas la lecture de vidéos.
+            </video>
+            <div className="absolute inset-0 bg-black/10 pointer-events-none"></div>
+          </div>
+        </Reveal>
 
       </div>
     </section>

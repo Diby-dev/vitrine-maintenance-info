@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import Reveal from "./Reveal";
 
 // Sous-composant pour gérer l'animation de comptage individuel
 function CounterItem({ end, label, suffix = "" }) {
@@ -69,9 +70,9 @@ function CounterItem({ end, label, suffix = "" }) {
 
 export default function Stats() {
   const statsData = [
-    { end: 1500, label: "Appareils réparés avec succès", suffix: "+" },
-    { end: 5, label: "Années d'expérience", suffix: "+" },
-    { end: 98, label: "Taux de satisfaction client", suffix: "%" },
+    { end: 1500, label: "Appareils réparés avec succès", suffix: "+", animation: "fade-right" },
+    { end: 5, label: "Années d'expérience", suffix: "+", animation: "fade-up" },
+    { end: 98, label: "Taux de satisfaction client", suffix: "%", animation: "fade-left" },
   ];
 
   return (
@@ -95,12 +96,18 @@ export default function Stats() {
       {/* Grille des statistiques */}
       <div className="relative z-10 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {statsData.map((stat, index) => (
-          <CounterItem 
-            key={index} 
-            end={stat.end} 
-            label={stat.label} 
-            suffix={stat.suffix} 
-          />
+          <Reveal 
+            key={index}
+            animation={stat.animation}
+            delay={150 + index * 120}
+            className="w-full"
+          >
+            <CounterItem 
+              end={stat.end} 
+              label={stat.label} 
+              suffix={stat.suffix} 
+            />
+          </Reveal>
         ))}
       </div>
     </section>

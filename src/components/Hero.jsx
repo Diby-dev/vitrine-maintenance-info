@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Reveal from './Reveal';
 
 export default function Hero() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,27 +28,33 @@ export default function Hero() {
         {/* --- Navbar (Haut) --- */}
         <nav className="flex items-center justify-between w-full text-white">
           {/* Nom du site à gauche */}
-          <div className="text-2xl font-bold tracking-tight">
-            Ismo<span className="text-purple-400">IT</span>
-          </div>
+          <Reveal animation="fade-right" delay={100}>
+            <div className="text-2xl font-bold tracking-tight">
+              Ismo<span className="text-purple-400">IT</span>
+            </div>
+          </Reveal>
 
           {/* Liens au centre (Desktop) */}
-          <ul className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-200">
-            <li><a href="#services" className="hover:text-white transition-colors">Services</a></li>
-            <li><a href="#tarifs" className="hover:text-white transition-colors">Tarifs</a></li>
-            <li><a href="#a-propos" className="hover:text-white transition-colors">À propos</a></li>
-            <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
-          </ul>
+          <Reveal animation="fade-down" delay={200} className="hidden md:block">
+            <ul className="flex items-center gap-8 text-sm font-medium text-slate-200">
+              <li><a href="#services" className="hover:text-white transition-colors">Services</a></li>
+              <li><a href="#tarifs" className="hover:text-white transition-colors">Tarifs</a></li>
+              <li><a href="#a-propos" className="hover:text-white transition-colors">À propos</a></li>
+              <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+            </ul>
+          </Reveal>
 
           {/* Boutons à droite (Desktop) */}
-          <div className="hidden md:flex items-center gap-4">
-            <button className="text-sm font-medium hover:text-white transition-colors">
-              Connexion
-            </button>
-            <button className="bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white font-medium text-sm px-5 py-2 rounded-full transition-all">
-              Devis
-            </button>
-          </div>
+          <Reveal animation="fade-left" delay={300} className="hidden md:block">
+            <div className="flex items-center gap-4">
+              <button className="text-sm font-medium hover:text-white transition-colors">
+                Connexion
+              </button>
+              <button className="bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white font-medium text-sm px-5 py-2 rounded-full transition-all">
+                Devis
+              </button>
+            </div>
+          </Reveal>
 
           {/* Bouton Burger (Mobile) */}
           <button 
@@ -101,21 +108,27 @@ export default function Hero() {
         {/* --- Centre-Bas (Texte et bouton centrés) --- */}
         <div className="flex flex-col items-center text-center">
           {/* Phrase juste au-dessus du bouton */}
-          <p className="text-lg md:text-xl text-slate-50 font-medium tracking-wide mb-4">
-            Ismo maintenance
-          </p>
+          <Reveal animation="fade-up" delay={400}>
+            <p className="text-lg md:text-xl text-slate-50 font-medium tracking-wide mb-4">
+              Ismo maintenance
+            </p>
+          </Reveal>
 
-          <p className="text-sm md:text-base text-slate-200 font-medium tracking-wide mb-4">
-            Maintenance, amélioration et réparation<br />de vos appareils téléphone, PC, imprimante.
-          </p>
+          <Reveal animation="fade-up" delay={550}>
+            <p className="text-sm md:text-base text-slate-200 font-medium tracking-wide mb-4">
+              Maintenance, amélioration et réparation<br />de vos appareils téléphone, PC, imprimante.
+            </p>
+          </Reveal>
 
           {/* Bouton blanc, rounded, au centre en bas */}
-          <a 
-            href="#contact"
-            className="group inline-flex items-center gap-3 bg-white text-slate-900 hover:bg-slate-100 font-semibold px-8 py-3.5 rounded-full text-base transition-all shadow-xl"
-          >
-            <span>Demander une réparation</span>
-          </a>
+          <Reveal animation="zoom-in" delay={700}>
+            <a 
+              href="#contact"
+              className="group inline-flex items-center gap-3 bg-white text-slate-900 hover:bg-slate-100 font-semibold px-8 py-3.5 rounded-full text-base transition-all shadow-xl hover:scale-105"
+            >
+              <span>Demander une réparation</span>
+            </a>
+          </Reveal>
         </div>
       </div>
     </header>

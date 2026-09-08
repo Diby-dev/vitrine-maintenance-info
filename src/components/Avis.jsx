@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 export default function Avis() {
   const reviews = [
     {
@@ -34,19 +36,27 @@ export default function Avis() {
 
       {/* En-tête de section */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12 text-center flex flex-col items-center gap-4 mb-12">
-        <div className="inline-block px-4 py-1.5 bg-purple-600/10 border border-purple-600/20 rounded-full text-purple-700 text-sm font-medium">
-          Témoignages
-        </div>
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-          Ce que disent nos clients
-        </h2>
-        <p className="text-slate-600 max-w-xl text-base">
-          La satisfaction de nos clients est notre plus belle récompense.
-        </p>
+        <Reveal animation="fade-down" delay={100}>
+          <div className="inline-block px-4 py-1.5 bg-purple-600/10 border border-purple-600/20 rounded-full text-purple-700 text-sm font-medium">
+            Témoignages
+          </div>
+        </Reveal>
+
+        <Reveal animation="fade-up" delay={200}>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+            Ce que disent nos clients
+          </h2>
+        </Reveal>
+
+        <Reveal animation="fade-up" delay={300}>
+          <p className="text-slate-600 max-w-xl text-base">
+            La satisfaction de nos clients est notre plus belle récompense.
+          </p>
+        </Reveal>
       </div>
 
       {/* Conteneur du défilement infini vers la droite */}
-      <div className="relative z-10 w-full overflow-hidden py-4">
+      <Reveal animation="zoom-in" delay={400} className="relative z-10 w-full overflow-hidden py-4">
         
         {/* Effets de fondu sur les côtés adaptés au fond blanc */}
         <div className="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
@@ -87,7 +97,7 @@ export default function Avis() {
           ))}
         </div>
 
-      </div>
+      </Reveal>
     </section>
   );
 }
