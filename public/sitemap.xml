@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://ismoit.vercel.app/</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    
+    <!-- Référencement Google Images -->
+    <image:image>
+      <image:loc>https://ismoit.vercel.app/ordi.jpg</image:loc>
+      <image:title>Réparation PC et ordinateurs portables à Abidjan - IsmoIT</image:title>
+      <image:caption>Diagnostic complet, changement d'écran et optimisation de PC à Abidjan</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ismoit.vercel.app/mobil.jpg</image:loc>
+      <image:title>Maintenance smartphones et tablettes à Abidjan - IsmoIT</image:title>
+      <image:caption>Changement écran tactile et remplacement batterie téléphone Abidjan</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ismoit.vercel.app/optimisation.jpg</image:loc>
+      <image:title>Optimisation PC et configuration Gaming à Abidjan</image:title>
+      <image:caption>Ajout de SSD, RAM et carte graphique pour PC de bureau et gaming</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ismoit.vercel.app/imprimante.jpg</image:loc>
+      <image:title>Réparation et entretien d'imprimantes à Abidjan</image:title>
+      <image:caption>Dépannage imprimante laser et jet d'encre à Adjamé Abidjan</image:caption>
+    </image:image>
+  </url>
+</urlset>

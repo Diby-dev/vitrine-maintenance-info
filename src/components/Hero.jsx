@@ -121,16 +121,16 @@ export default function Hero() {
 
         {/* --- Centre-Bas (Texte et bouton centrés) --- */}
         <div className="flex flex-col items-center text-center">
-          {/* Phrase juste au-dessus du bouton */}
+          {/* Phrase juste au-dessus du bouton - H1 Principal pour le SEO Google */}
           <Reveal animation="fade-up" delay={400}>
-            <p className="text-lg md:text-xl text-slate-50 font-medium tracking-wide mb-4">
-              Ismo maintenance
-            </p>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl text-slate-50 font-bold tracking-tight !m-0 !mb-3">
+              Ismo Maintenance Informatique
+            </h1>
           </Reveal>
 
           <Reveal animation="fade-up" delay={550}>
-            <p className="text-sm md:text-base text-slate-200 font-medium tracking-wide mb-4">
-              Maintenance, amélioration et réparation<br />de vos appareils téléphone, PC, imprimante.
+            <p className="text-sm md:text-base text-slate-200 font-medium tracking-wide mb-5 max-w-lg">
+              Maintenance, amélioration et réparation express<br className="hidden sm:inline" /> de vos téléphones, PC et imprimantes à Abidjan.
             </p>
           </Reveal>
 

@@ -73,7 +73,8 @@ export default function Realisations() {
                 <div className="w-full h-80 rounded-2xl overflow-hidden shadow-lg border border-slate-300 bg-slate-100 relative">
                   <img 
                     src={project.image} 
-                    alt={project.title} 
+                    alt={`${project.title} - Intervention IsmoIT Abidjan`} 
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>

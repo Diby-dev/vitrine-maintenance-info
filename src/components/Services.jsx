@@ -77,7 +77,8 @@ export default function Services() {
                 <div className="w-full md:w-48 h-32 rounded-xl overflow-hidden border border-slate-200 shrink-0 bg-slate-100 shadow-sm">
                   <img 
                     src={service.image} 
-                    alt={service.title} 
+                    alt={`${service.title} à Abidjan - IsmoIT Maintenance`} 
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
