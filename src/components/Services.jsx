@@ -1,6 +1,8 @@
 import Reveal from './Reveal';
+import { useModal } from '../context/ModalContext';
 
 export default function Services() {
+  const { openRdv } = useModal();
   const servicesList = [
     {
       title: "Réparation PC & Ordinateurs",
@@ -83,12 +85,12 @@ export default function Services() {
 
               {/* Partie droite : Bouton d'action */}
               <Reveal animation="fade-left" delay={350 + index * 100} className="w-full md:w-auto flex justify-end shrink-0">
-                <a 
-                  href="#contact" 
-                  className="w-full md:w-auto px-6 py-2.5 rounded-full border border-slate-300 bg-white hover:bg-purple-600 hover:border-purple-600 text-slate-800 hover:text-white font-medium text-sm transition-all text-center shadow-sm"
+                <button 
+                  onClick={() => openRdv(service.title)}
+                  className="w-full md:w-auto px-6 py-2.5 rounded-full border border-slate-300 bg-white hover:bg-purple-600 hover:border-purple-600 text-slate-800 hover:text-white font-medium text-sm transition-all text-center shadow-sm cursor-pointer"
                 >
                   Demander ce service
-                </a>
+                </button>
               </Reveal>
             </div>
           ))}

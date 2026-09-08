@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import Reveal from './Reveal';
+import { useModal } from '../context/ModalContext';
 
 export default function Hero() {
   const [isOpen, setIsOpen] = useState(false);
+  const { openRdv, openDevis, openLogin } = useModal();
 
   return (
     <header className="relative w-full h-screen overflow-hidden">
@@ -47,10 +49,16 @@ export default function Hero() {
           {/* Boutons à droite (Desktop) */}
           <Reveal animation="fade-left" delay={300} className="hidden md:block">
             <div className="flex items-center gap-4">
-              <button className="text-sm font-medium hover:text-white transition-colors">
+              <button 
+                onClick={() => openLogin()} 
+                className="text-sm font-medium hover:text-white transition-colors cursor-pointer"
+              >
                 Connexion
               </button>
-              <button className="bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white font-medium text-sm px-5 py-2 rounded-full transition-all">
+              <button 
+                onClick={() => openDevis()}
+                className="bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white font-medium text-sm px-5 py-2 rounded-full transition-all cursor-pointer"
+              >
                 Devis
               </button>
             </div>
@@ -96,12 +104,18 @@ export default function Hero() {
 
           {/* Boutons Connexion et Devis en bas du menu mobile */}
           <div className="flex flex-col gap-4 mt-auto pt-6 border-t border-white/10">
-            <button onClick={() => setIsOpen(false)} className="w-full py-3 text-left text-base font-medium text-slate-300 hover:text-white transition-colors">
+            <button 
+              onClick={() => { setIsOpen(false); openLogin(); }} 
+              className="w-full py-3 text-left text-base font-medium text-slate-300 hover:text-white transition-colors cursor-pointer"
+            >
               Connexion
             </button>
-            <a href="#contact" onClick={() => setIsOpen(false)} className="w-full bg-white text-slate-900 font-semibold py-3.5 rounded-full text-center transition-all shadow-lg hover:bg-slate-100">
+            <button 
+              onClick={() => { setIsOpen(false); openDevis(); }} 
+              className="w-full bg-white text-slate-900 font-semibold py-3.5 rounded-full text-center transition-all shadow-lg hover:bg-slate-100 cursor-pointer"
+            >
               Devis
-            </a>
+            </button>
           </div>
         </div>
 
@@ -122,12 +136,12 @@ export default function Hero() {
 
           {/* Bouton blanc, rounded, au centre en bas */}
           <Reveal animation="zoom-in" delay={700}>
-            <a 
-              href="#contact"
-              className="group inline-flex items-center gap-3 bg-white text-slate-900 hover:bg-slate-100 font-semibold px-8 py-3.5 rounded-full text-base transition-all shadow-xl hover:scale-105"
+            <button 
+              onClick={() => openRdv()}
+              className="group inline-flex items-center gap-3 bg-white text-slate-900 hover:bg-slate-100 font-semibold px-8 py-3.5 rounded-full text-base transition-all shadow-xl hover:scale-105 cursor-pointer"
             >
               <span>Demander une réparation</span>
-            </a>
+            </button>
           </Reveal>
         </div>
       </div>

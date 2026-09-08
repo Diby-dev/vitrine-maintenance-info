@@ -1,6 +1,8 @@
 import Reveal from './Reveal';
+import { useModal } from '../context/ModalContext';
 
 export default function Realisations() {
+  const { openProject } = useModal();
   const projects = [
     {
       title: "Réparation PC & Ordinateurs Portables",
@@ -63,7 +65,10 @@ export default function Realisations() {
               delay={150 + index * 120}
               className="h-full"
             >
-              <div className="flex flex-col gap-4 group cursor-pointer h-full">
+              <div 
+                onClick={() => openProject(project)} 
+                className="flex flex-col gap-4 group cursor-pointer h-full"
+              >
                 {/* Conteneur de l'image avec effet zoom au survol */}
                 <div className="w-full h-80 rounded-2xl overflow-hidden shadow-lg border border-slate-300 bg-slate-100 relative">
                   <img 

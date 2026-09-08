@@ -1,6 +1,34 @@
+import { useState } from 'react';
 import Reveal from './Reveal';
+import { useModal } from '../context/ModalContext';
 
 export default function Contact() {
+  const { showToast } = useModal();
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [submittedData, setSubmittedData] = useState(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      const ticketId = 'MSG-' + Math.floor(1000 + Math.random() * 9000);
+      setSubmittedData({
+        ticketId,
+        name,
+        phone,
+      });
+      showToast(`Votre message a bien été envoyé ! Référence : #${ticketId}`);
+      setName('');
+      setPhone('');
+      setMessage('');
+    }, 850);
+  };
+
   return (
     <section 
       id="contact" 
@@ -30,67 +58,108 @@ export default function Contact() {
               </Reveal>
             </div>
 
-            {/* Formulaire */}
-            <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-6">
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Nom */}
-                <Reveal animation="fade-right" delay={280} className="w-full">
-                  <div className="flex flex-col gap-2">
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                      Nom *
-                    </label>
-                    <input 
-                      type="text" 
-                      required
-                      placeholder="Votre nom complet"
-                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-purple-600 focus:ring-2 focus:ring-purple-600/20 transition-all text-sm"
-                    />
-                  </div>
-                </Reveal>
-
-                {/* Numéro */}
-                <Reveal animation="fade-left" delay={280} className="w-full">
-                  <div className="flex flex-col gap-2">
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                      Numéro de téléphone *
-                    </label>
-                    <input 
-                      type="tel" 
-                      required
-                      placeholder="Ex: +225 07 00 00 00 00"
-                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-purple-600 focus:ring-2 focus:ring-purple-600/20 transition-all text-sm"
-                    />
-                  </div>
-                </Reveal>
-              </div>
-
-              {/* Message */}
-              <Reveal animation="fade-up" delay={340} className="w-full">
-                <div className="flex flex-col gap-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                    Message *
-                  </label>
-                  <textarea 
-                    rows="4" 
-                    required
-                    placeholder="Décrivez votre besoin en quelques mots..."
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-purple-600 focus:ring-2 focus:ring-purple-600/20 transition-all text-sm resize-none"
-                  ></textarea>
+            {submittedData ? (
+              <div className="p-6 md:p-8 rounded-2xl bg-emerald-50 border border-emerald-200 flex flex-col items-center text-center gap-4 animate-fadeIn">
+                <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl font-bold">
+                  ✓
                 </div>
-              </Reveal>
-
-              {/* Bouton d'envoi */}
-              <Reveal animation="zoom-in" delay={400} className="w-full">
-                <button 
-                  type="submit"
-                  className="w-full py-4 bg-slate-950 hover:bg-purple-700 text-white font-bold text-sm uppercase tracking-wider rounded-xl transition-colors shadow-lg cursor-pointer"
+                <div className="flex flex-col gap-1">
+                  <h4 className="text-xl font-bold text-slate-900">Message envoyé avec succès !</h4>
+                  <p className="text-sm text-slate-600">
+                    Merci <strong>{submittedData.name}</strong>. Votre demande a bien été transmise aux techniciens d'Ismo Maintenance.
+                  </p>
+                </div>
+                <div className="bg-white p-3 rounded-xl border border-emerald-200 text-xs text-slate-600 font-mono">
+                  Ticket d'assistance : <strong className="text-emerald-700">#{submittedData.ticketId}</strong>
+                </div>
+                <p className="text-xs text-slate-500">
+                  Nous vous recontacterons au <strong>{submittedData.phone}</strong> sous un délai moyen de 2 heures ouvrées.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setSubmittedData(null)}
+                  className="mt-2 text-xs font-semibold text-purple-700 hover:text-purple-900 underline"
                 >
-                  Envoyer le message
+                  Envoyer un autre message
                 </button>
-              </Reveal>
+              </div>
+            ) : (
+              /* Formulaire */
+              <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Nom */}
+                  <Reveal animation="fade-right" delay={280} className="w-full">
+                    <div className="flex flex-col gap-2">
+                      <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                        Nom *
+                      </label>
+                      <input 
+                        type="text" 
+                        required
+                        placeholder="Votre nom complet"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-purple-600 focus:ring-2 focus:ring-purple-600/20 transition-all text-sm"
+                      />
+                    </div>
+                  </Reveal>
 
-            </form>
+                  {/* Numéro */}
+                  <Reveal animation="fade-left" delay={280} className="w-full">
+                    <div className="flex flex-col gap-2">
+                      <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                        Numéro de téléphone *
+                      </label>
+                      <input 
+                        type="tel" 
+                        required
+                        placeholder="Ex: +225 07 00 00 00 00"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-purple-600 focus:ring-2 focus:ring-purple-600/20 transition-all text-sm"
+                      />
+                    </div>
+                  </Reveal>
+                </div>
+
+                {/* Message */}
+                <Reveal animation="fade-up" delay={340} className="w-full">
+                  <div className="flex flex-col gap-2">
+                    <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                      Message *
+                    </label>
+                    <textarea 
+                      rows="4" 
+                      required
+                      placeholder="Décrivez votre besoin en quelques mots..."
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-purple-600 focus:ring-2 focus:ring-purple-600/20 transition-all text-sm resize-none"
+                    ></textarea>
+                  </div>
+                </Reveal>
+
+                {/* Bouton d'envoi */}
+                <Reveal animation="zoom-in" delay={400} className="w-full">
+                  <button 
+                    type="submit"
+                    disabled={loading}
+                    className="w-full py-4 bg-slate-950 hover:bg-purple-700 text-white font-bold text-sm uppercase tracking-wider rounded-xl transition-colors shadow-lg cursor-pointer flex items-center justify-center gap-2"
+                  >
+                    {loading ? (
+                      <>
+                        <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                        <span>Envoi de votre message...</span>
+                      </>
+                    ) : (
+                      <span>Envoyer le message</span>
+                    )}
+                  </button>
+                </Reveal>
+
+              </form>
+            )}
 
             {/* Informations de localisation et contact de l'entreprise */}
             <div className="pt-8 border-t border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-6 text-slate-700 text-sm">
