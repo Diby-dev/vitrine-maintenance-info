@@ -57,7 +57,7 @@ function CounterItem({ end, label, suffix = "" }) {
 
   return (
     <div ref={itemRef} className="flex flex-col items-center text-center p-6 bg-slate-950/70 border border-slate-800 rounded-2xl backdrop-blur-md shadow-xl">
-      <span className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400 mb-2">
+      <span className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-50 to-blue-900 mb-2">
         {count}{suffix}
       </span>
       <span className="text-slate-300 text-sm md:text-base font-medium">

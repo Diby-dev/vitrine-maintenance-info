@@ -23,31 +23,31 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         showNavbar
-          ? "translate-y-0 opacity-100 bg-slate-950/75 backdrop-blur-md border-b border-slate-800/80 shadow-lg shadow-black/20"
+          ? "translate-y-0 opacity-100 bg-slate-50 backdrop-blur-md border-b border-slate-800/80 shadow-lg shadow-black/20"
           : "-translate-y-full opacity-0 pointer-events-none"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
         
         {/* Logo / Nom de la marque */}
-        <a href="#" className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
-          <span className="w-3 h-3 rounded-full bg-purple-500 animate-pulse"></span>
-          Ismo<span className="text-purple-400">Maintenance</span>
+        <a href="#" className="text-xl font-bold tracking-tight text-slate-900 flex items-center gap-2">
+          <span className="w-3 h-3 rounded-full bg-slate-900 animate-pulse"></span>
+          Ismo<span className="text-blue-700">Maintenance</span>
         </a>
 
         {/* Liens de navigation (Desktop) */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-          <a href="#accueil" className="hover:text-purple-400 transition-colors">Accueil</a>
-          <a href="#a-propos" className="hover:text-purple-400 transition-colors">À propos</a>
-          <a href="#services" className="hover:text-purple-400 transition-colors">Services</a>
-          <a href="#contact" className="hover:text-purple-400 transition-colors">Contact</a>
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-900">
+          <a href="#accueil" className="hover:text-blue-900 transition-colors">Accueil</a>
+          <a href="#a-propos" className="hover:text-blue-900 transition-colors">À propos</a>
+          <a href="#services" className="hover:text-blue-900 transition-colors">Services</a>
+          <a href="#contact" className="hover:text-blue-900 transition-colors">Contact</a>
         </nav>
 
         {/* Bouton d'action / Devis (Desktop) */}
         <div className="hidden md:flex items-center">
           <a
             href="#contact"
-            className="px-5 py-2.5 rounded-full bg-purple-600 hover:bg-purple-700 text-white font-medium text-sm transition-all shadow-md shadow-purple-600/20"
+            className="px-5 py-2.5  bg-slate-900 hover:bg-slate-500 text-white font-medium text-sm transition-all shadow-md shadow-purple-600/20"
           >
             Prendre rendez-vous
           </a>
@@ -56,7 +56,7 @@ export default function Navbar() {
         {/* Bouton Burger (Mobile) */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden text-slate-300 hover:text-white focus:outline-none p-2"
+          className="md:hidden text-slate-900 hover:text-slate-700 focus:outline-none p-2"
           aria-label="Menu"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -103,7 +103,7 @@ export default function Navbar() {
           <a
             href="#contact"
             onClick={() => setMobileMenuOpen(false)}
-            className="mt-2 w-full text-center py-3 rounded-full bg-purple-600 hover:bg-purple-700 text-white font-medium text-sm transition-all shadow-md"
+            className="mt-2 w-full text-center py-3 rounded-full bg-slate-900 hover:bg-slate-500 text-white font-medium text-sm transition-all shadow-md"
           >
             Prendre rendez-vous
           </a>

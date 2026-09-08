@@ -103,3 +103,21 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+
+
+
+@keyframes marquee {
+  0% {
+    transform: translateX(-33.33%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
